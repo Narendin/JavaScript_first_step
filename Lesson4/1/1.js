@@ -23,9 +23,3 @@ for (const number of numbers) {
     console.log(getObjectByInt(number));
 }
 
-for (const key in object) {
-    if (Object.hasOwnProperty.call(object, key)) {
-        const element = object[key];
-        
-    }
-}
