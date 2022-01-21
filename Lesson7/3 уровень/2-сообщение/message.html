@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <button>Показать сообщение</button>
+    <div class="message">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, aliquam enim voluptates quibusdam
+        perferendis sint ipsa, nulla quas doloribus nobis libero voluptatem unde inventore. Ut quas corporis fugit error
+        explicabo? Ipsa quos qui similique sequi officia quod ab reiciendis alias!
+    </div>
+
+    <!-- 
+    Задание. Вам нужно чтобы при клике на кнопку появлялось сообщение .message
+    снизу экрана, в общем как сообщения вконтакте.
+    1. Аудио воспроизводите как здесь https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement
+    2. Чтобы получить высоту .message, используйте свойство clientHeight
+    3. Чтобы анимировать перемещение .message используйте стиль transform
+    как здесь https://webref.ru/css/value/translatey
+    -->
+
+    <script>
+        'use strict';
+
+        let btnEl = document.querySelector('button');
+        let divEl = document.querySelector('.message');
+        let audouEl = new Audio('notification.mp3');
+        audouEl.volume = 0.1;
+
+        btnEl.addEventListener('click', showMsg);
+
+        divEl.addEventListener('click', hideMsg);      
+        divEl.addEventListener('contextmenu', hideMsg);
+        
+        /*
+        Тут крутил-вертел, всяко-разно пробовал, интернет шерстил,
+        но так и не смог сделать так, чтобы div скрывался и по
+        нажатию колесика мыши.
+        Событие под это подходит только mouseup либо mousedown,
+        но они перекрывают события click и contextmenu
+        и в итоге контекстное меню не скрывается.
+        Если есть какой-то способ, просьба сообщить.
+        P.S. oncontextmenu = "return false;", поставленный в div не помогает.
+        */       
+
+        function showMsg(){
+            audouEl.play();
+            divEl.style.display = 'block';
+            divEl.style.transform = `translateY(-${30 + divEl.clientHeight}px)`;               
+        }
+
+        function hideMsg(event){
+            audouEl.pause();
+            audouEl.currentTime = 0;
+            divEl.style.display = 'none';
+            divEl.style.transform = `translateY(${30 + divEl.clientHeight}px)`;
+            event.preventDefault();
+        }
+
+        
+
+
+    </script>
+</body>
+
+</html>
