@@ -6,7 +6,7 @@ let positions = [
         figure: 'rook',
         color: 'white'
     },
-    {
+    { 
         coordCol: 'b',
         coordRow: 1,
         figure: 'knight',

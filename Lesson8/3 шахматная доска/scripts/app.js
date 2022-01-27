@@ -18,6 +18,7 @@ let app = {
         //добавляем строку с названиями колонок
         this.insertColsChars();
     },
+    
 
     /**
      * Метод вставляет пешки на доску.
@@ -72,10 +73,10 @@ let app = {
      */
     generateBoard() {
         // 3. создаем переменную board и присваиваем ей пустую строку, в ней будет храниться разметка игрового поля в виде строки
-        board = '';
+        let board = '';
         // 3.1 создаем переменную rowStartWithColor, в которой укажем, что линия на игровом поле будет начинаться с белого цвета
         // т.е. присваиваем строку "white"
-        rowStartWithColor = "white";
+        let rowStartWithColor = "white";
         // 3.2 в цикле перебираем все строки из конфига
         for (let i = 0; i < this.config.rows.length; i++) {
             // 3.3 здесь в переменной row в виде строки будет храниться разметка для линии на поле (тег tr),
@@ -165,7 +166,7 @@ let app = {
             // 7.3 в текущий тег td в innerText вставляем номер строки из this.config.rows
             td.innerText = this.config.rows[i];
             // 7.4 получившийся тег td вставляем в текущую строку (тег tr)
-            trs[i].insertAdjacentElement("afterbegin", td);
+            trs[i].insertAdjacentHTML("afterbegin", td);
         }
     },
 
@@ -187,7 +188,7 @@ let app = {
         // 8.4 получаем тег tbody
         let tbody = document.querySelector('tbody');
         // 8.5 и в него перед </tbody> вставляем значение из переменной tr
-        tbody.insertAdjacentElement('beforeend', tr);
+        tbody.insertAdjacentHTML('beforeend', tr);
     },
 }
 

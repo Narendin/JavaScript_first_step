@@ -24,7 +24,7 @@ document.addEventListener('scroll', function(event) {
     }
 });
 
-/**
+/** 
  * Функция вставляет несколько постов на страницу.
  */
 function insertPosts() {
